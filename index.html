@@ -315,28 +315,10 @@
         .send-btn:active {
             transform: scale(0.95);
         }
-        .stop-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--error);
-            border: none;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        .stop-btn:hover {
-            background-color: #dc2626;
-            transform: scale(1.05);
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
         }
         .typing-indicator {
             display: flex;
@@ -533,7 +515,6 @@
         
         // Variáveis de controle
         let isGenerating = false;
-        let abortController = null;
         let currentFileData = null;
 
         // Funções auxiliares
@@ -619,14 +600,10 @@
 
         // Função para obter resposta do bot
         async function getBotResponse(prompt, fileData = null) {
-            // Criar novo AbortController para esta requisição
-            abortController = new AbortController();
             isGenerating = true;
             
-            // Mudar botão para "parar"
-            sendBtn.classList.add('stop-btn');
-            sendBtn.innerHTML = '<i class="fas fa-stop"></i>';
-            sendBtn.onclick = stopGeneration;
+            // Desabilitar o botão de envio durante o processamento
+            sendBtn.disabled = true;
             
             // Show typing indicator
             const typing = document.createElement("div");
@@ -669,47 +646,23 @@
                 const res = await fetch(API_URL, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(body),
-                    signal: abortController.signal
+                    body: JSON.stringify(body)
                 });
                 
-                // Verificar se a resposta foi abortada antes de processar
-                if (!abortController.signal.aborted) {
-                    const data = await res.json();
-                    const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "❌ Não foi possível obter uma resposta.";
-                    
-                    typing.remove();
-                    addMessage("bot", aiText);
-                }
+                const data = await res.json();
+                const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "❌ Não foi possível obter uma resposta.";
+                
+                typing.remove();
+                addMessage("bot", aiText);
             } catch (err) {
-                // Só mostrar mensagem de erro se não foi um aborto intencional
-                if (err.name !== 'AbortError') {
-                    console.error("Error:", err);
-                    typing.remove();
-                    addMessage("bot", "⚠️ Ocorreu um erro ao obter resposta. Por favor, tente novamente.");
-                } else {
-                    typing.remove();
-                    addMessage("bot", "✋ Resposta interrompida pelo usuário.");
-                }
+                console.error("Error:", err);
+                typing.remove();
+                addMessage("bot", "⚠️ Ocorreu um erro ao obter resposta. Por favor, tente novamente.");
             } finally {
                 // Restaurar estado normal
                 isGenerating = false;
-                abortController = null;
-                resetSendButton();
+                sendBtn.disabled = false;
             }
-        }
-
-        function stopGeneration() {
-            if (abortController && !abortController.signal.aborted) {
-                abortController.abort();
-            }
-            resetSendButton();
-        }
-
-        function resetSendButton() {
-            sendBtn.classList.remove('stop-btn');
-            sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
-            sendBtn.onclick = sendMessage;
         }
 
         // Função para enviar mensagem
@@ -718,9 +671,6 @@
             
             if (!message && !currentFileData) return;
             
-            // Desabilitar o botão de envio durante o processamento
-            sendBtn.disabled = true;
-            
             // Adicionar mensagem do usuário ao chat
             if (message) {
                 addMessage("user", message);
@@ -728,10 +678,7 @@
             }
             
             // Obter resposta do bot
-            getBotResponse(message, currentFileData).finally(() => {
-                // Reabilitar o botão de envio após o processamento
-                sendBtn.disabled = false;
-            });
+            getBotResponse(message, currentFileData);
             
             // Limpar o arquivo atual após o envio
             currentFileData = null;
@@ -744,7 +691,7 @@
             const file = event.target.files[0];
             if (!file) return;
             
-            // Remove empty state if it exists
+            // Removes empty state if it exists
             const emptyState = document.querySelector('.empty-state');
             if (emptyState) emptyState.remove();
             
