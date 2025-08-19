@@ -23,13 +23,11 @@
             --error: #ef4444;
             --success: #10b981;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--background);
@@ -37,7 +35,6 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
         .container {
             display: flex;
             flex-direction: column;
@@ -46,7 +43,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-
         header {
             display: flex;
             justify-content: space-between;
@@ -54,13 +50,11 @@
             padding: 20px 0;
             border-bottom: 1px solid var(--border);
         }
-
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-
         .logo-icon {
             width: 40px;
             height: 40px;
@@ -72,7 +66,6 @@
             color: white;
             font-size: 20px;
         }
-
         .logo h1 {
             font-size: 24px;
             font-weight: 700;
@@ -80,12 +73,10 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .header-actions {
             display: flex;
             gap: 15px;
         }
-
         .icon-btn {
             width: 40px;
             height: 40px;
@@ -98,13 +89,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .icon-btn:hover {
             background-color: var(--background);
             transform: translateY(-2px);
             box-shadow: var(--shadow);
         }
-
         .chat-container {
             flex: 1;
             display: flex;
@@ -112,7 +101,6 @@
             overflow: hidden;
             margin-top: 20px;
         }
-
         .chat-box {
             flex: 1;
             overflow-y: auto;
@@ -121,27 +109,22 @@
             flex-direction: column;
             gap: 16px;
         }
-
         .message {
             display: flex;
             max-width: 80%;
             animation: fadeIn 0.3s ease;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .message.user {
             align-self: flex-end;
             flex-direction: row-reverse;
         }
-
         .message.bot {
             align-self: flex-start;
         }
-
         .message-avatar {
             width: 36px;
             height: 36px;
@@ -152,36 +135,30 @@
             flex-shrink: 0;
             margin: 0 10px;
         }
-
         .message.user .message-avatar {
             background-color: var(--user-message);
             color: white;
         }
-
         .message.bot .message-avatar {
             background-color: var(--bot-message);
             color: var(--text-primary);
         }
-
         .message-content {
             padding: 12px 16px;
             border-radius: 18px;
             position: relative;
         }
-
         .message.user .message-content {
             background-color: var(--user-message);
             color: white;
             border-bottom-right-radius: 4px;
         }
-
         .message.bot .message-content {
             background-color: var(--bot-message);
             color: var(--text-primary);
             border-bottom-left-radius: 4px;
             box-shadow: var(--shadow);
         }
-
         .message-content pre {
             background-color: rgba(0, 0, 0, 0.05);
             border-radius: 8px;
@@ -193,7 +170,6 @@
             max-width: 100%;
             position: relative;
         }
-
         .copy-code-btn {
             position: absolute;
             top: 10px;
@@ -210,18 +186,15 @@
             align-items: center;
             gap: 4px;
         }
-
         .copy-code-btn:hover {
             background: white;
             color: var(--primary);
         }
-
         .copy-code-btn.copied {
             background-color: var(--success);
             color: white;
             border-color: var(--success);
         }
-
         .message-content code {
             font-family: 'Courier New', monospace;
             background-color: rgba(0, 0, 0, 0.05);
@@ -229,13 +202,11 @@
             border-radius: 4px;
             font-size: 14px;
         }
-
         .message-content img {
             max-width: 100%;
             border-radius: 8px;
             margin-top: 8px;
         }
-
         .message-content .file-attachment {
             display: flex;
             align-items: center;
@@ -245,32 +216,26 @@
             border-radius: 8px;
             margin-top: 8px;
         }
-
         .message-content .file-attachment i {
             font-size: 24px;
             color: var(--primary);
         }
-
         .message-content .file-info {
             display: flex;
             flex-direction: column;
         }
-
         .message-content .file-name {
             font-weight: 600;
             font-size: 14px;
         }
-
         .message-content .file-size {
             font-size: 12px;
             color: var(--text-secondary);
         }
-
         .input-container {
             padding: 20px 0;
             border-top: 1px solid var(--border);
         }
-
         .input-wrapper {
             display: flex;
             align-items: flex-end;
@@ -281,17 +246,14 @@
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
         }
-
         .input-wrapper:focus-within {
             box-shadow: var(--shadow-lg);
         }
-
         .file-input-wrapper {
             position: relative;
             overflow: hidden;
             display: inline-block;
         }
-
         .file-input {
             position: absolute;
             left: 0;
@@ -301,12 +263,10 @@
             width: 40px;
             height: 40px;
         }
-
         .input-actions {
             display: flex;
             gap: 8px;
         }
-
         .action-btn {
             width: 36px;
             height: 36px;
@@ -320,12 +280,10 @@
             color: var(--text-secondary);
             transition: all 0.3s ease;
         }
-
         .action-btn:hover {
             background-color: var(--background);
             color: var(--primary);
         }
-
         .user-input {
             flex: 1;
             border: none;
@@ -337,7 +295,6 @@
             padding: 8px 0;
             font-family: 'Inter', sans-serif;
         }
-
         .send-btn {
             width: 40px;
             height: 40px;
@@ -351,16 +308,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .send-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
         }
-
         .send-btn:active {
             transform: scale(0.95);
         }
-
         .stop-btn {
             width: 40px;
             height: 40px;
@@ -375,18 +329,15 @@
             transition: all 0.3s ease;
             animation: pulse 1.5s infinite;
         }
-
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-
         .stop-btn:hover {
             background-color: #dc2626;
             transform: scale(1.05);
         }
-
         .typing-indicator {
             display: flex;
             align-items: center;
@@ -398,7 +349,6 @@
             box-shadow: var(--shadow);
             width: fit-content;
         }
-
         .typing-dot {
             width: 8px;
             height: 8px;
@@ -406,15 +356,12 @@
             background-color: var(--text-secondary);
             animation: typing 1.4s infinite;
         }
-
         .typing-dot:nth-child(2) {
             animation-delay: 0.2s;
         }
-
         .typing-dot:nth-child(3) {
             animation-delay: 0.4s;
         }
-
         @keyframes typing {
             0%, 60%, 100% {
                 transform: translateY(0);
@@ -425,7 +372,6 @@
                 opacity: 1;
             }
         }
-
         .empty-state {
             display: flex;
             flex-direction: column;
@@ -436,7 +382,6 @@
             padding: 20px;
             color: var(--text-secondary);
         }
-
         .empty-state-icon {
             width: 80px;
             height: 80px;
@@ -449,18 +394,15 @@
             font-size: 40px;
             margin-bottom: 20px;
         }
-
         .empty-state h2 {
             font-size: 24px;
             margin-bottom: 10px;
             color: var(--text-primary);
         }
-
         .empty-state p {
             max-width: 500px;
             margin-bottom: 30px;
         }
-
         .suggestion-chips {
             display: flex;
             flex-wrap: wrap;
@@ -468,7 +410,6 @@
             justify-content: center;
             max-width: 600px;
         }
-
         .chip {
             padding: 8px 16px;
             background-color: var(--surface);
@@ -478,7 +419,6 @@
             transition: all 0.3s ease;
             border: 1px solid var(--border);
         }
-
         .chip:hover {
             background-color: var(--primary);
             color: white;
@@ -486,7 +426,6 @@
             transform: translateY(-2px);
             box-shadow: var(--shadow);
         }
-
         .file-preview {
             margin-top: 10px;
             padding: 10px;
@@ -496,44 +435,35 @@
             align-items: center;
             gap: 10px;
         }
-
         .file-preview img {
             max-width: 100px;
             max-height: 100px;
             border-radius: 4px;
         }
-
         .file-preview-info {
             flex: 1;
         }
-
         .file-preview-name {
             font-weight: 600;
             font-size: 14px;
         }
-
         .file-preview-remove {
             color: var(--error);
             cursor: pointer;
         }
-
         @media (max-width: 768px) {
             .container {
                 padding: 0 15px;
             }
-
             .message {
                 max-width: 90%;
             }
-
             .empty-state h2 {
                 font-size: 20px;
             }
-
             .suggestion-chips {
                 gap: 8px;
             }
-
             .chip {
                 font-size: 12px;
                 padding: 6px 12px;
@@ -556,7 +486,6 @@
                 </div>
             </div>
         </header>
-
         <div class="chat-container">
             <div class="chat-box" id="chatBox">
                 <div class="empty-state">
@@ -573,7 +502,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="input-container">
                 <div id="filePreviewContainer" style="display: none;"></div>
                 <div class="input-wrapper">
@@ -606,178 +534,44 @@
         // Variáveis de controle
         let isGenerating = false;
         let abortController = null;
+        let currentFileData = null;
 
-        // Auto-resize textarea
-        userInput.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-        });
-
-        // Send message on Enter key (but allow Shift+Enter for new line)
-        userInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
-
-        sendBtn.addEventListener('click', sendMessage);
-        fileInput.addEventListener('change', handleFileUpload);
-        
-        // Handle suggestion chips
-        suggestionChips.forEach(chip => {
-            chip.addEventListener('click', () => {
-                const suggestion = chip.getAttribute('data-suggestion');
-                userInput.value = suggestion;
-                sendMessage();
-            });
-        });
-
-        function sendMessage() {
-            const userText = userInput.value.trim();
-            const filePreview = filePreviewContainer.querySelector('.file-preview');
-            
-            if (!userText && !filePreview) return;
-            
-            // Não permitir enviar nova mensagem enquanto está gerando
-            if (isGenerating) return;
-            
-            // Remove empty state if it exists
-            const emptyState = document.querySelector('.empty-state');
-            if (emptyState) emptyState.remove();
-            
-            // Get file data if exists
-            let fileData = null;
-            if (filePreview) {
-                fileData = {
-                    name: filePreview.dataset.filename,
-                    type: filePreview.dataset.filetype,
-                    data: filePreview.dataset.filedata
-                };
-            }
-            
-            addMessage("user", userText, fileData);
-            userInput.value = '';
-            userInput.style.height = 'auto';
-            
-            // Clear file preview
-            if (filePreview) {
-                filePreview.remove();
-                filePreviewContainer.style.display = 'none';
-                fileInput.value = '';
-            }
-            
-            // Prepare prompt for AI
-            let prompt = userText;
-            if (fileData) {
-                if (!prompt) prompt = "Por favor, analise este arquivo.";
-                if (fileData.type.startsWith('image/')) {
-                    prompt = `Analisando a imagem "${fileData.name}": ${prompt}`;
-                } else {
-                    prompt = `Analisando o arquivo "${fileData.name}": ${prompt}`;
-                }
-            }
-            
-            getBotResponse(prompt, fileData);
-        }
-
-        function addMessage(sender, text, fileData = null) {
-            // Remove typing indicator if it exists
-            const typingIndicator = document.querySelector('.typing-indicator');
-            if (typingIndicator) typingIndicator.remove();
-            
-            const msg = document.createElement("div");
-            msg.className = `message ${sender}`;
-            
-            const avatar = document.createElement("div");
-            avatar.className = "message-avatar";
-            avatar.innerHTML = sender === "user" ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
-            
-            const content = document.createElement("div");
-            content.className = "message-content";
-            
-            if (fileData) {
-                if (fileData.type.startsWith('image/')) {
-                    const img = document.createElement('img');
-                    img.src = fileData.data;
-                    img.alt = fileData.name;
-                    content.appendChild(img);
-                } else {
-                    const fileAttachment = document.createElement('div');
-                    fileAttachment.className = 'file-attachment';
-                    
-                    const fileIcon = document.createElement('i');
-                    fileIcon.className = getFileIcon(fileData.type);
-                    
-                    const fileInfo = document.createElement('div');
-                    fileInfo.className = 'file-info';
-                    
-                    const fileName = document.createElement('div');
-                    fileName.className = 'file-name';
-                    fileName.textContent = fileData.name;
-                    
-                    fileInfo.appendChild(fileName);
-                    fileAttachment.appendChild(fileIcon);
-                    fileAttachment.appendChild(fileInfo);
-                    content.appendChild(fileAttachment);
-                }
-            }
-            
-            if (text) {
-                if (sender === "bot" && text.includes("```")) {
-                    const parsed = parseCode(text);
-                    content.innerHTML += parsed;
-                } else {
-                    const textElement = document.createElement('div');
-                    textElement.textContent = text;
-                    content.appendChild(textElement);
-                }
-            }
-            
-            msg.appendChild(avatar);
-            msg.appendChild(content);
-            chatBox.appendChild(msg);
-            chatBox.scrollTop = chatBox.scrollHeight;
-            
-            // Adicionar event listeners para botões de cópia
-            addCopyButtonListeners();
-        }
-
+        // Funções auxiliares
         function parseCode(text) {
-            return text.replace(/```([\s\S]*?)```/g, (_, code) => {
-                const escapedCode = escapeHtml(code.trim());
-                return `
-                <div class="code-container">
-                    <pre><code>${escapedCode}</code></pre>
-                    <button class="copy-code-btn" data-code="${escapedCode}">
-                        <i class="fas fa-copy"></i> Copiar
-                    </button>
-                </div>
-                `;
+            const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
+            return text.replace(codeBlockRegex, (match, language, code) => {
+                const escapedCode = escapeHtml(code);
+                return `<pre><code class="language-${language || ''}">${escapedCode}</code><button class="copy-code-btn"><i class="fas fa-copy"></i> Copiar</button></pre>`;
             });
         }
 
-        function escapeHtml(str) {
-            return str
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;");
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
 
         function getFileIcon(fileType) {
-            if (fileType.startsWith('image/')) return 'fas fa-image';
-            if (fileType.includes('pdf')) return 'fas fa-file-pdf';
-            if (fileType.includes('word') || fileType.includes('document')) return 'fas fa-file-word';
-            if (fileType.includes('text')) return 'fas fa-file-alt';
-            return 'fas fa-file';
+            if (fileType.startsWith('image/')) {
+                return 'fas fa-image';
+            } else if (fileType === 'application/pdf') {
+                return 'fas fa-file-pdf';
+            } else if (fileType.includes('word')) {
+                return 'fas fa-file-word';
+            } else if (fileType === 'text/plain') {
+                return 'fas fa-file-alt';
+            } else {
+                return 'fas fa-file';
+            }
         }
 
         function addCopyButtonListeners() {
-            document.querySelectorAll('.copy-code-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const code = this.getAttribute('data-code');
-                    navigator.clipboard.writeText(code).then(() => {
-                        // Feedback visual
+            document.querySelectorAll('.copy-code-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const codeElement = this.parentElement.querySelector('code');
+                    const text = codeElement.textContent;
+                    
+                    navigator.clipboard.writeText(text).then(() => {
                         this.classList.add('copied');
                         this.innerHTML = '<i class="fas fa-check"></i> Copiado!';
                         
@@ -786,12 +580,44 @@
                             this.innerHTML = '<i class="fas fa-copy"></i> Copiar';
                         }, 2000);
                     }).catch(err => {
-                        console.error('Erro ao copiar código:', err);
+                        console.error('Falha ao copiar texto: ', err);
                     });
                 });
             });
         }
 
+        // Função para adicionar mensagens ao chat
+        function addMessage(sender, message) {
+            // Remove empty state if it exists
+            const emptyState = document.querySelector('.empty-state');
+            if (emptyState) emptyState.remove();
+            
+            const messageDiv = document.createElement("div");
+            messageDiv.className = `message ${sender}`;
+            
+            const avatar = document.createElement("div");
+            avatar.className = "message-avatar";
+            avatar.innerHTML = sender === "user" ? '<i class="fas fa-user"></i>' : '<i class="fas fa-robot"></i>';
+            
+            const content = document.createElement("div");
+            content.className = "message-content";
+            
+            // Processa a mensagem para identificar blocos de código
+            const processedMessage = parseCode(message);
+            content.innerHTML = processedMessage;
+            
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(content);
+            chatBox.appendChild(messageDiv);
+            
+            // Adiciona listeners para botões de cópia
+            addCopyButtonListeners();
+            
+            // Rola para o final do chat
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Função para obter resposta do bot
         async function getBotResponse(prompt, fileData = null) {
             // Criar novo AbortController para esta requisição
             abortController = new AbortController();
@@ -847,36 +673,73 @@
                     signal: abortController.signal
                 });
                 
-                const data = await res.json();
-                const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "❌ Não foi possível obter uma resposta.";
-                
-                typing.remove();
-                addMessage("bot", aiText);
-            } catch (err) {
-                if (err.name === 'AbortError') {
+                // Verificar se a resposta foi abortada antes de processar
+                if (!abortController.signal.aborted) {
+                    const data = await res.json();
+                    const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "❌ Não foi possível obter uma resposta.";
+                    
                     typing.remove();
-                    addMessage("bot", "✋ Resposta interrompida pelo usuário.");
-                } else {
+                    addMessage("bot", aiText);
+                }
+            } catch (err) {
+                // Só mostrar mensagem de erro se não foi um aborto intencional
+                if (err.name !== 'AbortError') {
                     console.error("Error:", err);
                     typing.remove();
                     addMessage("bot", "⚠️ Ocorreu um erro ao obter resposta. Por favor, tente novamente.");
+                } else {
+                    typing.remove();
+                    addMessage("bot", "✋ Resposta interrompida pelo usuário.");
                 }
             } finally {
                 // Restaurar estado normal
                 isGenerating = false;
                 abortController = null;
-                sendBtn.classList.remove('stop-btn');
-                sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
-                sendBtn.onclick = sendMessage;
+                resetSendButton();
             }
         }
 
         function stopGeneration() {
-            if (abortController) {
+            if (abortController && !abortController.signal.aborted) {
                 abortController.abort();
             }
+            resetSendButton();
         }
 
+        function resetSendButton() {
+            sendBtn.classList.remove('stop-btn');
+            sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>';
+            sendBtn.onclick = sendMessage;
+        }
+
+        // Função para enviar mensagem
+        function sendMessage() {
+            const message = userInput.value.trim();
+            
+            if (!message && !currentFileData) return;
+            
+            // Desabilitar o botão de envio durante o processamento
+            sendBtn.disabled = true;
+            
+            // Adicionar mensagem do usuário ao chat
+            if (message) {
+                addMessage("user", message);
+                userInput.value = "";
+            }
+            
+            // Obter resposta do bot
+            getBotResponse(message, currentFileData).finally(() => {
+                // Reabilitar o botão de envio após o processamento
+                sendBtn.disabled = false;
+            });
+            
+            // Limpar o arquivo atual após o envio
+            currentFileData = null;
+            filePreviewContainer.style.display = 'none';
+            filePreviewContainer.innerHTML = '';
+        }
+
+        // Função para lidar com upload de arquivo
         function handleFileUpload(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -924,11 +787,19 @@
                     filePreview.remove();
                     filePreviewContainer.style.display = 'none';
                     fileInput.value = '';
+                    currentFileData = null;
                 });
                 
                 filePreview.appendChild(fileInfo);
                 filePreview.appendChild(removeBtn);
                 filePreviewContainer.appendChild(filePreview);
+                
+                // Armazenar os dados do arquivo para envio posterior
+                currentFileData = {
+                    type: file.type,
+                    data: e.target.result,
+                    name: file.name
+                };
             };
             
             if (file.type.startsWith('image/')) {
@@ -938,6 +809,39 @@
                 reader.readAsDataURL(file);
             }
         }
+
+        // Configurar eventos
+        sendBtn.addEventListener("click", sendMessage);
+        
+        userInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+        
+        fileInput.addEventListener("change", handleFileUpload);
+        
+        // Auto-resize textarea
+        userInput.addEventListener("input", function() {
+            this.style.height = "auto";
+            this.style.height = Math.min(this.scrollHeight, 120) + "px";
+        });
+        
+        // Configurar chips de sugestão
+        suggestionChips.forEach(chip => {
+            chip.addEventListener("click", () => {
+                const suggestion = chip.getAttribute("data-suggestion");
+                userInput.value = suggestion;
+                userInput.focus();
+            });
+        });
+        
+        // Configurar botão de configurações
+        settingsBtn.addEventListener("click", () => {
+            // Aqui você pode implementar um modal de configurações
+            alert("Configurações em desenvolvimento!");
+        });
     </script>
 </body>
 </html>
