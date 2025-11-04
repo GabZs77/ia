@@ -388,31 +388,35 @@
     .prompt-container :where(.prompt-wrapper, .prompt-form, .prompt-actions) {
       display: flex;
       gap: 12px;
-      height: 56px;
       align-items: center;
     }
     .prompt-container .prompt-form {
-      height: 100%;
       width: 100%;
       border-radius: 130px;
       background: var(--secondary-color);
+      display: flex;
+      align-items: center;
     }
     .prompt-form .prompt-input {
       width: 100%;
-      height: 100%;
       background: none;
       outline: none;
       border: none;
       font-size: 1rem;
       color: var(--text-color);
-      padding-left: 24px;
+      padding: 16px 24px;
+      resize: none;
+      max-height: 120px;
+      min-height: 56px;
+      line-height: 1.4;
+      font-family: "Poppins", sans-serif;
     }
     .prompt-form .prompt-input::placeholder {
       color: var(--placeholder-color);
     }
     .prompt-wrapper button {
       width: 56px;
-      height: 100%;
+      height: 56px;
       flex-shrink: 0;
       cursor: pointer;
       border-radius: 50%;
@@ -504,11 +508,11 @@
       
       .prompt-container :where(.prompt-wrapper, .prompt-form, .prompt-actions) {
         gap: 8px;
-        height: 53px;
       }
       
       .prompt-container button {
         width: 53px;
+        height: 53px;
       }
       
       .prompt-form :is(.file-upload-wrapper, button, img) {
@@ -517,7 +521,9 @@
       }
       
       .prompt-form .prompt-input {
-        padding-left: 20px;
+        padding: 14px 20px;
+        min-height: 53px;
+        max-height: 120px;
       }
       
       .prompt-form .file-upload-wrapper.active #cancel-file-btn {
@@ -578,7 +584,7 @@
     <div class="prompt-container">
       <div class="prompt-wrapper">
         <form action="#" class="prompt-form" id="prompt-form">
-          <input type="text" placeholder="Pergunte ao Gemini" class="prompt-input" id="prompt-input" required />
+          <textarea placeholder="Pergunte ao Gemini (Shift+Enter para enviar)" class="prompt-input" id="prompt-input" required></textarea>
           <div class="prompt-actions">
             <div class="file-upload-wrapper">
               <img src="#" class="file-preview" />
@@ -587,8 +593,8 @@
               <button id="cancel-file-btn" type="button" class="material-symbols-rounded">close</button>
               <button id="add-file-btn" type="button" class="material-symbols-rounded">attach_file</button>
             </div>
-            <button id="stop-response-btn" type="button" class="material-symbols-rounded">stop_circle</button>
-            <button id="send-prompt-btn" class="material-symbols-rounded">arrow_upward</button>
+            <button id="stop-response-btn" type="button" class="material-symbols-rounded">stop_circle"></button>
+            <button id="send-prompt-btn" class="material-symbols-rounded">arrow_upward"></button>
           </div>
         </form>
         <button id="theme-toggle-btn" class="material-symbols-rounded">light_mode</button>
@@ -822,6 +828,8 @@
       
       userData.message = userMessage;
       promptInput.value = "";
+      // Reset textarea height
+      promptInput.style.height = 'auto';
       document.body.classList.add("chats-active", "bot-responding");
       fileUploadWrapper.classList.remove("file-attached", "img-attached", "active");
       
@@ -851,6 +859,12 @@
         scrollToBottom();
         generateResponse(botMsgDiv);
       }, 600); // 600 ms delay
+    };
+    
+    // Auto-resize textarea based on content
+    const autoResizeTextarea = () => {
+      promptInput.style.height = 'auto';
+      promptInput.style.height = Math.min(promptInput.scrollHeight, 120) + 'px';
     };
     
     // Handle file input change (file upload)
@@ -916,6 +930,23 @@
       const shouldHide = target.classList.contains("prompt-input") || (wrapper.classList.contains("hide-controls") && (target.id === "add-file-btn" || target.id === "stop-response-btn"));
       wrapper.classList.toggle("hide-controls", shouldHide);
     });
+    
+    // Handle Enter key in textarea
+    promptInput.addEventListener("keydown", (e) => {
+      // Submit on Shift+Enter
+      if (e.key === "Enter" && e.shiftKey) {
+        e.preventDefault();
+        promptForm.dispatchEvent(new Event("submit"));
+      }
+      // Allow Enter to create a new line (default behavior)
+      else if (e.key === "Enter") {
+        // Just let the default behavior happen (create new line)
+        setTimeout(autoResizeTextarea, 0);
+      }
+    });
+    
+    // Auto-resize textarea when content changes
+    promptInput.addEventListener("input", autoResizeTextarea);
     
     // Add event listeners for form submission and file input click
     promptForm.addEventListener("submit", handleFormSubmit);
